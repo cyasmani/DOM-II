@@ -44,6 +44,38 @@ document.querySelector(".footer p").addEventListener("mouseover", event => {
 })
 
 //bubbling
+const containerdiv = document.createElement("div");
+const myheader = document.createElement("h2");
+const mydiv = document.createElement("div");
+const myfooter = document.querySelector(".footer");
+myfooter.appendChild(containerdiv);
+containerdiv.appendChild(mydiv);
+mydiv.appendChild(myheader);
+myheader.textContent = "Bubbling header";
+mydiv.style.border = "2rem solid green";
+containerdiv.style.border = "2rem solid blue";
+myheader.style.border = "2rem solid red";
+
+
+containerdiv.addEventListener("click", (event) => {
+    event.target.style.border = "2rem solid purple";
+    console.log("the container div")
+})
+mydiv.addEventListener("click", (event) => {
+    event.target.style.border = "2rem solid yellow";
+    event.stopPropagation()
+    console.log("the div")
+})
+
+myheader.addEventListener("click", (event) => {
+    event.target.style.border = "2rem solid pink";
+    event.stopPropagation()
+    console.log("the header")
+})
+
+
+
+
 
 document.querySelector("a").addEventListener("click", event => {
     console.log(` ${event.target} a was clicked`);
@@ -56,7 +88,7 @@ document.querySelector("h1").addEventListener("click", event => {
 
 //var tl = gsap.timeline();
 
-gsap.to("a", {duration:0.1, opacity:0, scale: 0.3, stagger:0.25, ease:"back" });
+gsap.to("a", {duration:0.1, opacity:0.3, scale: 0.3, stagger:0.25, ease:"back" });
 
 gsap.to("img", {duration:2 , x: 1000, rotation:360});
 
