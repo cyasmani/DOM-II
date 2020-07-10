@@ -43,5 +43,23 @@ document.querySelector(".footer p").addEventListener("mouseover", event => {
     event.target.style.color = "gold";
 })
 
+//bubbling
+
+document.querySelector("a").addEventListener("click", event => {
+    console.log(` ${event.target} a was clicked`);
+})
+
+document.querySelector("h1").addEventListener("click", event => {
+    console.log(`${event.target} h1 was clicked`);
+    event.stopPropagation();
+})
+
+//var tl = gsap.timeline();
+
+gsap.to("a", {duration:0.1, opacity:0, scale: 0.3, stagger:0.25, ease:"back" });
+
+gsap.to("img", {duration:2 , x: 1000, rotation:360});
+
+
 
 
